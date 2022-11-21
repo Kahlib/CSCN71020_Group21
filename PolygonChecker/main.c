@@ -1,15 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "angleFinder.h"
 
 int side = 0;
+float angleA;
+float angleB;
+float angleC;
+char result;
+
 
 int main() {
 	bool continueProgram = true;
 	while (continueProgram) {
 		printWelcome();
+		bool realVal = true;
 
 		int shapeChoice = printShapeMenu();
 
@@ -19,16 +28,51 @@ int main() {
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
-			break;
+
+			for (int i = 0; i < 3; i++)
+			{
+
+
+				int number = triangleSides[i];
+
+				if (number > 0 && (number > 57 || number < 48))
+				{
+
+				}
+				else
+				{
+					printf("Wrong values inputed\n");
+					exit(1);
+				}
+
+			}
+			if (realVal == true)
+			{
+				float s = (triangleSidesPtr[0] + triangleSidesPtr[1] + triangleSidesPtr[2]) / 2;
+
+				if (triangleSidesPtr[0] > s || triangleSidesPtr[1] > s || triangleSidesPtr[2] > s) // checks to see if triangle is valid 
+				{
+					fprintf(stderr, "The three sides %d, %d, %d do not form a triangle\n",
+						triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+				}
+				else                                                                               // finds the type of triangle and finds the angles
+				{
+					char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+					AngleFinder(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+					printf_s("%s\n", result);
+				}
+		    }
+			
 		case 0:
 			continueProgram = false;
 			break;
+		default:
+			printf_s("Invalid value entered.\n");
+			break;
 		}
+
 	}
-	return 0;
+	   
 }
 
 void printWelcome() {
@@ -51,11 +95,18 @@ int printShapeMenu() {
 	return shapeChoice;
 }
 
-int* getTriangleSides(int* triangleSides) {
+int* getTriangleSides(int* triangleSides)
+{
 	printf_s("Enter the three sides of the triangle: ");
 	for (int i = 0; i < 3; i++)
 	{
 		scanf_s("%d", &triangleSides[i]);
+		
+		int number = triangleSides[i];
+
+		
+		
+
 	}
 	return triangleSides;
 }
