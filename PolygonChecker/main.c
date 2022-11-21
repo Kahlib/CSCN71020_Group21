@@ -26,9 +26,6 @@ int main() {
 		case 0:
 			continueProgram = false;
 			break;
-		default:
-			printf_s("Invalid value entered.\n");
-			break;
 		}
 	}
 	return 0;
