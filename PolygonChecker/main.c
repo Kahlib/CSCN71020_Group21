@@ -12,7 +12,7 @@ float angleA;
 float angleB;
 float angleC;
 char result;
-
+// work
 
 int main() {
 	bool continueProgram = true;
