@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <math.h>
 
+#include "IfRectangle.h"
 #include "main.h"
 #include "triangleSolver.h"
 #include "angleFinder.h"
@@ -12,8 +13,8 @@ float angleA;
 float angleB;
 float angleC;
 char result;
-// work
 
+//work
 int main() {
 	bool continueProgram = true;
 	while (continueProgram) {
@@ -24,6 +25,15 @@ int main() {
 
 		switch (shapeChoice)
 		{
+		case 2:
+			printf_s("Four Points selected.\n");
+			int fourPointX[4] = { 0, 0, 0, 0 };
+			int fourPointY[4] = { 0, 0, 0, 0 };
+			int* FourPointXUser = getFourPointX(fourPointX);
+			int* FourPointYUser = getFourPointY(fourPointY);
+			IfRectangle(FourPointXUser[0], FourPointXUser[1], FourPointXUser[2], FourPointXUser[3], FourPointYUser[0], FourPointYUser[1], FourPointYUser[2], FourPointYUser[3]);
+			break;
+
 		case 1:
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
@@ -61,8 +71,8 @@ int main() {
 					AngleFinder(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 					printf_s("%s\n", result);
 				}
-		    }
-			
+			}
+
 		case 0:
 			continueProgram = false;
 			break;
@@ -72,7 +82,7 @@ int main() {
 		}
 
 	}
-	   
+
 }
 
 void printWelcome() {
@@ -101,12 +111,30 @@ int* getTriangleSides(int* triangleSides)
 	for (int i = 0; i < 3; i++)
 	{
 		scanf_s("%d", &triangleSides[i]);
-		
+
 		int number = triangleSides[i];
 
-		
-		
+
+
 
 	}
 	return triangleSides;
+}
+
+int getFourPointX(int* fourPointX) {
+	printf_s("Enter the four X values of the shape: ");
+	for (int i = 0; i < 4; i++)
+	{
+		scanf_s("%d", &fourPointX[i]);
+	}
+	return fourPointX;
+}
+
+int getFourPointY(int* fourPointY) {
+	printf_s("Enter the four Y values of the shape: ");
+	for (int i = 0; i < 4; i++)
+	{
+		scanf_s("%d", &fourPointY[i]);
+	}
+	return fourPointY;
 }

@@ -1,1 +1,1 @@
-float AngleFinder (int side1, int side2, int side3);
+float AngleFinder(int side1, int side2, int side3);

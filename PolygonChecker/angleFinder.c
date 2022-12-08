@@ -12,9 +12,6 @@ float AngleFinder(int side1, int side2, int side3)
 	float a = side1;
 	float b = side2;
 	float c = side3;
-	float a2 = pow(side1, 2);
-	float b2 = pow(side2, 2);
-	float c2 = pow(side3, 2);
 	float s = (a + b + c) / 2;
 	float pi = acos(-1);
 
@@ -26,7 +23,7 @@ float AngleFinder(int side1, int side2, int side3)
 	angleA = (180 / pi) * asin(a / (2 * R));
 	angleB = (180 / pi) * asin(b / (2 * R));
 	angleC = (180 / pi) * asin(c / (2 * R));
-	
+
 	printf("Angle of side 1 and side 2 is %f\n", angleA);
 	printf("Angle of side 2 and side 3 is %f\n", angleB);
 	printf("Angle of side 3 and side 1 is %f\n", angleC);
