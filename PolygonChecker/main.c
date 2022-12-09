@@ -13,6 +13,7 @@ float angleA;
 float angleB;
 float angleC;
 char result;
+bool wrongVal = false;
 
 //work
 int main() {
@@ -27,11 +28,17 @@ int main() {
 		{
 		case 2:
 			printf_s("Four Points selected.\n");
-			int fourPointX[4] = { 0, 0, 0, 0 };
-			int fourPointY[4] = { 0, 0, 0, 0 };
-			int* FourPointXUser = getFourPointX(fourPointX);
-			int* FourPointYUser = getFourPointY(fourPointY);
-			IfRectangle(FourPointXUser[0], FourPointXUser[1], FourPointXUser[2], FourPointXUser[3], FourPointYUser[0], FourPointYUser[1], FourPointYUser[2], FourPointYUser[3]);
+		
+			int fourPoint[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+	
+			getFourPoint(fourPoint);
+		
+
+
+	
+			IfRectangle(fourPoint[0], fourPoint[1], fourPoint[2], fourPoint[3], fourPoint[4], fourPoint[5], fourPoint[6], fourPoint[7]);
+			
+			
 			break;
 
 		case 1:
@@ -41,8 +48,6 @@ int main() {
 
 			for (int i = 0; i < 3; i++)
 			{
-
-
 				int number = triangleSides[i];
 
 				if (number > 0 && (number > 57 || number < 48))
@@ -94,6 +99,7 @@ void printWelcome() {
 }
 
 int printShapeMenu() {
+	printf_s("2. Rectangle\n");
 	printf_s("1. Triangle\n");
 	printf_s("0. Exit\n");
 
@@ -121,20 +127,19 @@ int* getTriangleSides(int* triangleSides)
 	return triangleSides;
 }
 
-int getFourPointX(int* fourPointX) {
-	printf_s("Enter the four X values of the shape: ");
-	for (int i = 0; i < 4; i++)
+int getFourPoint(int* fourPoint) {
+	printf_s("Enter the four points you wish to test in order (seperate all values with enter key): ");
+	for (int i = 0; i < 8; i++)
 	{
-		scanf_s("%d", &fourPointX[i]);
+		
+		if (scanf("%f", &fourPoint) != 1) {
+			printf("\nInvalid Input");
+			exit(1);
+		}
+
+
+		
 	}
-	return fourPointX;
+	return fourPoint;
 }
 
-int getFourPointY(int* fourPointY) {
-	printf_s("Enter the four Y values of the shape: ");
-	for (int i = 0; i < 4; i++)
-	{
-		scanf_s("%d", &fourPointY[i]);
-	}
-	return fourPointY;
-}
