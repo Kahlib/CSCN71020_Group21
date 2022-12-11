@@ -142,4 +142,3 @@ int getFourPoint(int* fourPoint) {
 	}
 	return fourPoint;
 }
-
