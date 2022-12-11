@@ -32,12 +32,10 @@ int main() {
 			int fourPoint[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 	
 			getFourPoint(fourPoint);
-		
 
+			bool result;
 
-	
-			IfRectangle(fourPoint[0], fourPoint[1], fourPoint[2], fourPoint[3], fourPoint[4], fourPoint[5], fourPoint[6], fourPoint[7]);
-			
+			result = IfRectangle(fourPoint[0], fourPoint[1], fourPoint[2], fourPoint[3], fourPoint[4], fourPoint[5], fourPoint[6], fourPoint[7]);
 			
 			break;
 

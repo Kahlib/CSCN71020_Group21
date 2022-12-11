@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "IfRectangle.h"
-
+#include <stdbool.h>
 
 float IfRectangle(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4)
 {
@@ -10,6 +10,7 @@ float IfRectangle(float x1, float y1, float x2, float y2, float x3, float y3, fl
 	float sideTwoLength;
 	float sideThreeLength;
 	float sideFourLength;
+	bool result = true;
 
 	sideOneLength = ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
 	sideTwoLength = ((x3 - x2) * (x3 - x2)) + ((y3 - y2) * (y3 - y2));
@@ -24,20 +25,20 @@ float IfRectangle(float x1, float y1, float x2, float y2, float x3, float y3, fl
 	if (sideOneLength == sideThreeLength && sideTwoLength == sideFourLength)
 	{
 		printf("is a rectangle\n");
-
 		float area;
 		area = sqrt(sideOneLength) * sqrt(sideTwoLength);
 		printf("The area of the rectangle is %.2f\n", area);
-
-
 	}
-	else
+	else {
 		printf("is not a rectangle\n");
+		result = false;
+	}
+
 
 	float perimeter;
 	perimeter = sqrt(sideOneLength) + sqrt(sideTwoLength) + sqrt(sideThreeLength) + sqrt(sideFourLength);
 	printf("The perimeter of the rectangle is %.2f\n", perimeter);
 
 
-	return 0;
+	return result;
 }

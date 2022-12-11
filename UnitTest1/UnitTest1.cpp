@@ -19,7 +19,6 @@ namespace UnitTest1
 			Assert::AreEqual(result, expected);
 		}
 
-
 		//testing whether 3 inputs form an isosceles triangle or not
 		TEST_METHOD(TestMethod2)
 		{
